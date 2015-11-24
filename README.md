@@ -22,3 +22,9 @@ localhost/populationYear/get/1881  (gets information from 1881 population)
 localhost/populationTot/delete/2000 (This method is not working)
 localhost//criminal/add/2011/attack on security personal/1000 (This method is not working correctly)
 
+**Sources**
+
+https://github.com/Ranagan/linked-data-project
+https://github.com/ianmcloughlin/diamond-api
+https://github.com/EoghanMoylan/Linked-Data
+
