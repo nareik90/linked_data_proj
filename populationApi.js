@@ -115,7 +115,7 @@ app.get('/crimeOffences', function(req,res)
 
 
 //enter crime id to display yearly rates
-app.get('/crimeOffences/get/:crimeQry', function(req,res)
+app.get('/crimeOf/get/:crimeQry', function(req,res)
 {
     db.all("SELECT crime, 0"+req.params.crimeQry+" FROM crimeOffences", function(err,row)
     {
@@ -127,17 +127,42 @@ app.get('/crimeOffences/get/:crimeQry', function(req,res)
 
 //+++++++++++++++++++++++++++++++++++++++++++++
 
-//joined by year and crime
+/*
+
+//Still hav not got this section working
+//joined by year and crime. when the user enters a date the
+//general population and the crime stats are displayed
 app.get('/crimeVyear/:yearPop/:yearCrime', function (req, res)
 {
-    db.all("SELECT population.year 0"+req.params.crimeQry+" AS crimeOffences", function(err,row)
+    db.all("SELECT population.year 0"+req.params.yearCrime+" AS population", function(err,row)
     {
         var rowString2 = JSON.stringify(row, null, '\t');
         res.sendStatus(rowString2);
         
     });
+});*/
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+//method deletes a row from the population datase
+app.delete('/populationTot/delete/:populationNt', function (req, res)
+{
+    db.all("DELETE FROM population WHERE a"+req.params.populationNt+"", function(err,row)
+    {
+        res.sendStatus("Population with Year;" + req.params.populationNt + " will be deleted");
+    });
 });
 
+
+//this is the post method that adds information to the crimeOffence database.
+app.post('/criminal/add/:crimeYear/:crimeCom/:crimeStat', function (req, res)
+{
+    db.all("INSERT INTO crimeOffence(crime, "+req.params.crimeCom+" ) VALUES (\""+req.params.crimeYear+"\", "+req.params.crimeStat+")",  function(err,row)
+    {
+        res.sendStatus("A new crime added to the crimeOffence Database");
+    });
+});
 
 
 var server = app.listen(8000);
