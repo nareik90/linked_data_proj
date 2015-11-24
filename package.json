@@ -1,0 +1,21 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "hold dependencies",
+  "main": "index.js",
+  "dependencies": {
+     "express": "~4.13.3",
+        "sqlite3": "~3.1.0"
+  },
+  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nareik90/linked_data_proj.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nareik90/linked_data_proj/issues"
+  },
+  "homepage": "https://github.com/nareik90/linked_data_proj"
+}
